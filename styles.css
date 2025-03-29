@@ -1,0 +1,99 @@
+body {
+    background: url('data/bg.webp') no-repeat center center/cover;
+    color: white; /* Or try light yellow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds depth for better contrast */
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 50px;
+    width: 80%;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    height: 80vh;
+    width: 100%;
+    border-radius: 40px;
+    padding: 5px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; 
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.hidden {
+    display: none;
+}
+
+/* Button Styling */
+#surprise-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff0000, #ff9800);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+#surprise-btn:hover {
+    background: linear-gradient(45deg, #ff9800, #ff0000);
+}
+
+/* Confetti Styles */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    animation: confetti-fall 3s linear infinite;
+    clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}

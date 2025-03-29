@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Happy Birthday Shefali! 🎂</h1>
+        <button id="surprise-btn">Click for a Surprise! 🎁</button>
+
+        <div id="gallery" class="hidden">
+            <h2>From The Vault!</h2>
+            <div class="carousel">
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <div class="carousel-images">
+                    <img src="/data/IMG1.jpg" alt="Memory 1">
+                    <img src="/data/IMG2.jpg" alt="Memory 2">
+                    <img src="/data/IMG3.jpg" alt="Memory 3">
+                    <img src="/data/IMG4.jpg" alt="Memory 4">
+                    <img src="/data/IMG5.jpg" alt="Memory 5">
+                    <img src="/data/IMG6.jpg" alt="Memory 6">
+                    <img src="/data/IMG7.jpg" alt="Memory 7">
+                    <img src="/data/IMG8.jpg" alt="Memory 8">
+                    <img src="/data/IMG9.jpg" alt="Memory 9">
+                    <img src="/data/IMG10.jpg" alt="Memory 10">
+                    <img src="/data/IMG11.jpg" alt="Memory 11">
+                    <img src="/data/IMG12.jpg" alt="Memory 12">
+                    <img src="/data/IMG13.jpg" alt="Memory 13">
+                    <img src="/data/IMG14.jpg" alt="Memory 14">
+                    <img src="/data/IMG15.jpg" alt="Memory 15">
+                    <img src="/data/IMG16.jpg" alt="Memory 16">
+                    <img src="/data/IMG17.jpg" alt="Memory 17">
+                    <img src="/data/IMG18.jpg" alt="Memory 18">
+                </div>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+
+        <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <audio id="sound-effect" src="data/Confetti.mp3"></audio>
+</body>
+</html>
