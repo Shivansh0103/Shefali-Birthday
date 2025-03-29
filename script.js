@@ -1,18 +1,31 @@
 let currentIndex = 0;
 
+function getTotalWidth() {
+    const images = document.querySelectorAll(".carousel img");
+    let totalWidth = 0;
+    images.forEach(img => totalWidth += img.offsetWidth + 10); // Include gap
+    return totalWidth;
+}
+
+function getVisibleWidth() {
+    return document.querySelector(".carousel").offsetWidth;
+}
+
 function showSlide(index) {
     const slides = document.querySelector(".carousel-images");
-    const totalSlides = document.querySelectorAll(".carousel img").length - 11;
+    const totalWidth = getTotalWidth();
+    const visibleWidth = getVisibleWidth();
 
-    if (index >= totalSlides) currentIndex = 0;
-    if (index < 0) currentIndex = totalSlides - 1;
+    const maxIndex = Math.ceil(totalWidth / visibleWidth) - 1;
+    
+    if (index > maxIndex) currentIndex = 0; // Loop back
+    if (index < 0) currentIndex = maxIndex; // Loop to last
 
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    // Ensure prev and next buttons remain visible
-    document.querySelector(".prev").style.display = "block";
-    document.querySelector(".next").style.display = "block";
+    slides.style.transform = `translateX(-${currentIndex * visibleWidth}px)`;
 }
+
+// Ensure the slides adjust when screen resizes
+window.addEventListener("resize", () => showSlide(currentIndex));
 
 function nextSlide() {
     currentIndex++;
@@ -23,6 +36,11 @@ function prevSlide() {
     currentIndex--;
     showSlide(currentIndex);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    showSlide(currentIndex);
+});
+
 
 document.getElementById("surprise-btn").addEventListener("click", function () {
     const gallery = document.getElementById("gallery");
@@ -41,8 +59,15 @@ document.getElementById("surprise-btn").addEventListener("click", function () {
 });
 
 // Confetti logic
+let confettiContainer; // Store reference to avoid multiple instances
+
 function launchConfetti() {
-    const confettiContainer = document.createElement("div");
+    // If confetti is already present, remove it first
+    if (confettiContainer) {
+        confettiContainer.remove();
+    }
+
+    confettiContainer = document.createElement("div");
     confettiContainer.classList.add("confetti-container");
     document.body.appendChild(confettiContainer);
 
@@ -58,6 +83,7 @@ function launchConfetti() {
     // Stop confetti after 6s
     setTimeout(() => {
         confettiContainer.remove();
+        confettiContainer = null;
     }, 6000);
 }
 
